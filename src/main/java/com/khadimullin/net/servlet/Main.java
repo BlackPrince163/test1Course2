@@ -1,7 +1,7 @@
 package com.khadimullin.net.servlet;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.khadimullin.net.service.HttpWeatherService;
+import com.khadimullin.net.service.WeatherService;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -13,7 +13,7 @@ import java.util.Map;
 
 @WebServlet(name = "main", urlPatterns = "/main")
 public class Main extends HttpServlet {
-    private final HttpWeatherService weatherService = new HttpWeatherService();
+    private final WeatherService weatherService = new WeatherService();
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
