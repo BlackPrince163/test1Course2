@@ -11,7 +11,7 @@
                     document.getElementById('ajax-div').innerHTML = '<p>  Город не найден! </p>'
                 } else {
                     let response = JSON.parse(responseText)
-                    document.getElementById('ajax-div').innerHTML = '<table>' +
+                    document.getElementById('ajax-div').innerHTML =
                         '<ul>' +
                         '<li>  Город: ' + response['name'] + '</li>' +
                         '</ul>' +
@@ -31,7 +31,6 @@
                         '<ul>' +
                         '<li>  Скорость ветра: ' + response['wind_speed'] + '</li>' +
                         '</ul>' +
-                        '</table>' +
 
                         '<b>Хочу 10 баллов </b>'
                 }
