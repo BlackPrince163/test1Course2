@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>main</title>
+    <script src="http://code.jquery.com/jquery-latest.min.js"></script>
+    <script>
+        $(document).on("click", "#ajax-button", function () {
+            $.post("/main?city=" + document.getElementById("city").value, function (responseText) {
+                if (responseText === 'This city is not found!'){
+                    document.getElementById('ajax-div').innerHTML = '<p>  Город не найден! </p>'
+                } else {
+                    let response = JSON.parse(responseText)
+                    document.getElementById('ajax-div').innerHTML = '<table>' +
+                        '<ul>' +
+                        '<li>  Город: ' + response['name'] + '</li>' +
+                        '</ul>' +
+
+                        '<ul>' +
+                        '<li>  Температура: ' + response['temp'] + '</li>' +
+                        '</ul>' +
+
+                        '<ul>' +
+                        '<li>  Чувствуется как: ' + response['feels_like'] + '</li>' +
+                        '</ul>' +
+
+                        '<ul>' +
+                        '<li>  Погода: ' + response['description'] + '</li>' +
+                        '</ul>' +
+
+                        '<ul>' +
+                        '<li>  Скорость ветра: ' + response['wind_speed'] + '</li>' +
+                        '</ul>' +
+                        '</table>' +
+
+                        '<b>Хочу 10 баллов </b>'
+                }
+            });
+        });
+    </script>
+</head>
+<body>
+<form>
+    <p class="lead" style="float: left; margin-right: 50px;">
+        Введите город:<br>
+        <input name="city" type="text" id="city"><br>
+    </p>
+    <br>
+    <p class="lead" style="margin-right: 1000px;">
+        <input type="button" value="Найти" id="ajax-button">
+    </p>
+</form>
+<br>
+<div id="ajax-div">
+
+</div>
+</body>
+</html>
